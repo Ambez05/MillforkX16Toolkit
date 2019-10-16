@@ -1,0 +1,40 @@
+import stdlib
+import stdio
+import random
+
+import X16
+
+
+void main() {
+    byte x1,y1,x2,y2
+    byte color
+
+    if (peek($D9) != 40) {
+        //call_function()
+    }
+
+    //Clear the Screen
+    V_SetArea(0,0,79,59,32,$BA)
+
+
+    X_SetRandSeed()
+
+    while (true)
+    {
+        //Get Random Box Size X 0,79 Y 0,59
+        x1 = U_RandBetween(0,79)
+        x2 = U_RandBetween(x1,79)
+        y1 = U_RandBetween(0,59)
+        y2 = U_RandBetween(y1,59)
+        color = rand()
+
+        //Display The Box
+        V_SetArea(x1,y1,x2,y2,32,color)
+
+        //Pause so we slow down a little otherwise things are blurry
+        X_PauseCycle(5000)
+    }
+
+
+}
+
